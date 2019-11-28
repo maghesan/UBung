@@ -33,7 +33,7 @@ if (mysqli_query($link, $sql)) {
 }
 
 //==================================Service
-$sql = "CREATE TABLE User (
+$sql = "CREATE TABLE Service (
     Id INT AUTO_INCREMENT, 
     Name VARCHAR(100), 
     PRIMARY KEY(Id))";
@@ -45,7 +45,7 @@ if (mysqli_query($link, $sql)) {
     echo 'Error creating table: ' . mysqli_error($link) . "\n";
 }
 
-//Please continue adding your tables here
+//Please continue adding your tables' scripts here
 
 
 
