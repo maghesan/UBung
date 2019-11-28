@@ -13,6 +13,8 @@ if (mysqli_query($link, $sql)) {
     echo 'Error creating database: ' . mysqli_error($link) . "\n";
 }
 
+mysqli_select_db($link, "UBung") or die(mysqli_connect_error());
+
 //==================================User
 $sql = "CREATE TABLE User (
     Id INT AUTO_INCREMENT, 
