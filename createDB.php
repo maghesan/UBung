@@ -75,12 +75,40 @@ if (mysqli_query($link, $sql)) {
 } else {
     echo 'Error creating table: ' . mysqli_error($link) . "\n";
 }
+
+//==================================Restaurant
+$sql = "CREATE TABLE Restaurant (
+    Id INT AUTO_INCREMENT, 
+    Name VARCHAR(100), 
+    OwnerId INT AUTO_INCREMENT, 
+    PRIMARY KEY(Id))";
+
+
+if (mysqli_query($link, $sql)) {
+    echo "Table User created successfully\n";
+} else {
+    echo 'Error creating table: ' . mysqli_error($link) . "\n";
+}
+
+//==================================Product
+$sql = "CREATE TABLE Restaurant (
+    Id INT AUTO_INCREMENT, 
+    Name VARCHAR(100), 
+    RestaurantId INT AUTO_INCREMENT, 
+    Description VARCHAR(100), 
+    Price Float,   
+    file_uploads = On
+    PRIMARY KEY(Id))";
+
+
+if (mysqli_query($link, $sql)) {
+    echo "Table User created successfully\n";
+} else {
+    echo 'Error creating table: ' . mysqli_error($link) . "\n";
+}
+
+
 //Please continue adding your tables' scripts here
-
-
-
-
-
 //And finally we close the connection to the MySQL server
 mysqli_close($link);
 ?>
