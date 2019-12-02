@@ -85,13 +85,13 @@ $sql = "CREATE TABLE Restaurant (
 
 
 if (mysqli_query($link, $sql)) {
-    echo "Table User created successfully\n";
+    echo "Table Restaurant created successfully\n";
 } else {
     echo 'Error creating table: ' . mysqli_error($link) . "\n";
 }
 
 //==================================Product
-$sql = "CREATE TABLE Restaurant (
+$sql = "CREATE TABLE Product (
     Id INT AUTO_INCREMENT, 
     Name VARCHAR(100), 
     RestaurantId INT AUTO_INCREMENT, 
@@ -102,11 +102,44 @@ $sql = "CREATE TABLE Restaurant (
 
 
 if (mysqli_query($link, $sql)) {
-    echo "Table User created successfully\n";
+    echo "Table Product created successfully\n";
 } else {
     echo 'Error creating table: ' . mysqli_error($link) . "\n";
 }
 
+//==================================Order
+$sql = "CREATE TABLE Order (
+    Id INT AUTO_INCREMENT, 
+    UserId INT NOT NULL, 
+    RestaurantId INT NOT NULL, 
+    DespatcherId  INT NOT NULL,
+    Status BOOLEAN, 
+    OrderDate DATE, 
+    DeliveryDate DATE,  
+    PRIMARY KEY(Id))";
+if (mysqli_query($link, $sql)) {
+    echo "Table Order created successfully\n";
+} else {
+    echo 'Error creating table: ' . mysqli_error($link) . "\n";
+}
+
+//==================================OrderDetails
+
+$sql = "CREATE TABLE OrderDetails (
+    OrderId INT AUTO_INCREMENT, 
+    ProductId INT AUTO_INCREMENT,
+	Quantity INT NOT NULL,
+	Price INT NOT NULL, 
+    PRIMARY KEY(OrderId),
+	PRIMARY KEY(ProductId),
+	FOREIGN KEY(OrderId) REFERENCES Order(OrderId),
+	FOREIGN KEY(ProductId) REFERENCES Product(ProductId))";
+
+if (mysqli_query($link, $sql)) {
+    echo "Table OrderDetails created successfully\n";
+} else {
+    echo 'Error creating table: ' . mysqli_error($link) . "\n";
+}
 
 //Please continue adding your tables' scripts here
 //And finally we close the connection to the MySQL server
